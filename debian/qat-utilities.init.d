@@ -95,7 +95,7 @@ echo --------------------------------------------------------
 exit 1
 }
 
-ADF_CTL=/usr/local/bin/adf_ctl
+ADF_CTL=/usr/bin/adf_ctl
 
 # store the total number of each type of device
 numDh895xDevicesPF=$(lspci -n | egrep -c "$INTEL_VENDORID:$DH895_DEVICE_PCI_ID")
@@ -231,7 +231,7 @@ case $1 in
     fi
 
     # Show device status
-    /usr/local/bin/adf_ctl $2 status
+    /usr/bin/adf_ctl $2 status
             ;;
 
  Shutdown|shutdown)
@@ -241,7 +241,7 @@ case $1 in
         disable_sriov $2
     fi
 
-    /usr/local/bin/adf_ctl down &>/dev/null
+    /usr/bin/adf_ctl down &>/dev/null
     modprobe -q -r qat_api
     modprobe -q -r usdm_drv
     modprobe -q -r qat_dh895xccvf
@@ -261,15 +261,15 @@ case $1 in
         echo disable sriov
         disable_sriov $2
     fi
-    /usr/local/bin/adf_ctl $2 down
+    /usr/bin/adf_ctl $2 down
             ;;
 
  Restart|restart)
-    /usr/local/bin/adf_ctl $2 restart
+    /usr/bin/adf_ctl $2 restart
             ;;
 
  Status|status)
-    /usr/local/bin/adf_ctl status
+    /usr/bin/adf_ctl status
     if [ "$?" -ne 0 ]
     then
         echo "No devices found. Please start the driver using:"
