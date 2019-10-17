@@ -35,6 +35,16 @@ override_dh_auto_install:
 	cp build/adf_ctl debian/tmp/usr/bin/
 	cp build/*.so debian/tmp/usr/lib/x86_64-linux-gnu
 	cp build/*.{conf,conf.*} debian/tmp/etc/	
+	cp vyos-default/*.conf debian/tmp/etc/
+
+
+override_dh_gencontrol:
+	dh_gencontrol
+
+# buggy like hell, overwrites content of the packages
+#override_dh_gencontrol:
+#	dh_gencontrol -- -pqat-utilities
+#	dh_gencontrol -- -pqat-kernel-modules -DDepends=linux-image-$(KV)-$(DEB_BUILD_ARCH)-vyos 
 	
 # make -C /home/vyos/linux/ M=/home/vyos/qat-1.7/quickassist/qat INSTALL_MOD_DIR=updates modules_install
 

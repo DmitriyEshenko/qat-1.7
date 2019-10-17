@@ -9,7 +9,7 @@ Vcs-Git: https://github.com/intel/QAT_Engine.git
 
 Package: qat-kernel-modules
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}
 Description: Intel QuickAssist Technology (Intel QAT) Driver for Linux
 
 Package: qat-utilities
