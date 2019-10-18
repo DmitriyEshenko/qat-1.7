@@ -2,7 +2,7 @@ Source: qat
 Section: Utilities
 Priority: optional
 Maintainer: hagbard <vyosdev@derith.de>
-Build-Depends: cdbs, debhelper (>= 9), autotools-dev, libudev-dev, libboost-dev
+Build-Depends: cdbs, debhelper (>= 9), autotools-dev, libudev-dev (>= 1.47), libboost-dev (>= 1.14), gcc (>= 4.4.7), g++ (>= 4.4.7), pkg-config	(>= 0.9.0)
 Standards-Version: 3.9.5
 Homepage: https://downloadcenter.intel.com/download/28797/Intel-QuickAssist-Technology-Intel-QAT-Driver-for-Linux-based-on-Intel-62X-Chipset?product=93168
 Vcs-Git: https://github.com/intel/QAT_Engine.git
