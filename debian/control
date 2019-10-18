@@ -14,5 +14,5 @@ Description: Intel QuickAssist Technology (Intel QAT) Driver for Linux
 
 Package: vyos-qat-utilities
 Architecture: any
-Depends: qat-kernel-modules, ${misc:Depends}
+Depends: vyos-qat-kernel-modules, ${misc:Depends}
 Description: Intel QuickAssist Technology (Intel QAT) Utilities for Linux
