@@ -7,12 +7,12 @@ Standards-Version: 3.9.5
 Homepage: https://downloadcenter.intel.com/download/28797/Intel-QuickAssist-Technology-Intel-QAT-Driver-for-Linux-based-on-Intel-62X-Chipset?product=93168
 Vcs-Git: https://github.com/intel/QAT_Engine.git
 
-Package: qat-kernel-modules
+Package: vyos-qat-kernel-modules
 Architecture: any
 Depends: ${dist:Depends}
 Description: Intel QuickAssist Technology (Intel QAT) Driver for Linux
 
-Package: qat-utilities
+Package: vyos-qat-utilities
 Architecture: any
 Depends: qat-kernel-modules, ${misc:Depends}
 Description: Intel QuickAssist Technology (Intel QAT) Utilities for Linux
