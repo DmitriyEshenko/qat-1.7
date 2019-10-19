@@ -26,7 +26,7 @@ override_dh_auto_install:
 	mkdir -p debian/tmp/etc
 	${MAKE} qat-driver-install
 	cp build/*.bin  debian/tmp/lib/firmware
-	cp -r /lib/modules/$(KV)/updates debian/tmp/lib/modules/$(KV)-$(DEB_BUILD_ARCH)-vyos/
+	cp -r /lib/modules/$(KV)-$(DEB_BUILD_ARCH)-vyos/updates debian/tmp/lib/modules/$(KV)-$(DEB_BUILD_ARCH)-vyos/
 	cp build/usdm_drv.ko debian/tmp/lib/modules/$(KV)-$(DEB_BUILD_ARCH)-vyos/kernel/drivers/
 	cp build/adf_ctl debian/tmp/usr/bin/
 	cp build/*.so debian/tmp/usr/lib/x86_64-linux-gnu
