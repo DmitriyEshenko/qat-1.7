@@ -10,7 +10,7 @@ KV := $(shell ${MAKE} -sC ${KERNELDIR} kernelversion)
 	dh $@
 
 override_dh_auto_configure:
-	dh_auto_configure -v -- --enable-kapi KERNEL_SOURCE_ROOT=${KERNELDIR}
+	dh_auto_configure -v -- KERNEL_SOURCE_ROOT=${KERNELDIR}
 
 override_dh_auto_clean:
 	dh_auto_clean -v
@@ -23,15 +23,18 @@ override_dh_auto_install:
 	mkdir -p debian/tmp/lib/firmware
 	mkdir -p debian/tmp/usr/bin
 	mkdir -p debian/tmp/usr/lib/x86_64-linux-gnu
-	mkdir -p debian/tmp/etc
+	mkdir -p debian/tmp/etc/init.d
+	mkdir -p debian/tmp/etc/modprobe.d
 	${MAKE} qat-driver-install
 	cp build/*.bin  debian/tmp/lib/firmware
-	cp -r /lib/modules/$(KV)-$(DEB_BUILD_ARCH)-vyos/updates debian/tmp/lib/modules/$(KV)-$(DEB_BUILD_ARCH)-vyos/
+	cp -r /lib/modules/$(KV)+/updates debian/tmp/lib/modules/$(KV)-$(DEB_BUILD_ARCH)-vyos/
 	cp build/usdm_drv.ko debian/tmp/lib/modules/$(KV)-$(DEB_BUILD_ARCH)-vyos/kernel/drivers/
 	cp build/adf_ctl debian/tmp/usr/bin/
 	cp build/*.so debian/tmp/usr/lib/x86_64-linux-gnu
-	cp build/*.{conf,conf.*} debian/tmp/etc/	
+	cp build/*.{conf,conf.*} debian/tmp/etc/
 	cp vyos-default/*.conf debian/tmp/etc/
+	cp build/qat_service  debian/tmp/etc/init.d/
+	cp debian/intel-qat-blacklist.conf debian/tmp/etc/modprobe.d/
 
 override_dh_gencontrol:
 	dh_gencontrol -- -Vdist:Depends="linux-image-$(KV)-$(DEB_BUILD_ARCH)-vyos"
